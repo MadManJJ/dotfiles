@@ -111,3 +111,16 @@ export PATH=/home/spark/.opencode/bin:$PATH
 alias docker-on='sudo systemctl start docker.socket docker.service'
 alias docker-off='sudo systemctl stop docker.service docker.socket'
 export PATH="$HOME/.local/bin:$PATH"
+
+# aws
+export AWS_PROFILE="sso-dev"
+
+# bun completions
+[ -s "/home/spark/.bun/_bun" ] && source "/home/spark/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
