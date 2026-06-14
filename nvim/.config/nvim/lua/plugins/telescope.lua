@@ -6,8 +6,17 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
-		-- 1. ADD THIS SETUP BLOCK
 		require("telescope").setup({
+			defaults = {
+				mappings = {
+					i = {
+						["<C-v>"] = function()
+							local text = vim.fn.getreg("+"):gsub("\n", "")
+							vim.api.nvim_put({ text }, "c", true, true)
+						end,
+					},
+				},
+			},
 			pickers = {
 				find_files = {},
 			},
@@ -22,6 +31,7 @@ return {
 			})
 		end, { desc = "Telescope buffers (Normal Mode)" })
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+
 		-- File Diagnostics (Bigger window, wrapped text)
 		vim.keymap.set("n", "<leader>fd", function()
 			require("telescope.builtin").diagnostics({

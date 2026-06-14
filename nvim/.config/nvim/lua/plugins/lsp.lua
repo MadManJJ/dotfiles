@@ -33,7 +33,7 @@ return {
 			-- Keep your speed optimization
 			capabilities.workspace = { didChangeWatchedFiles = { dynamicRegistration = false } }
 
-			vim.lsp.config('*', { capabilities = capabilities })
+			vim.lsp.config("*", { capabilities = capabilities })
 
 			vim.lsp.config("gopls", {
 				settings = {
@@ -60,7 +60,7 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "gopls", "lua_ls", "ts_ls", "angularls", "html", "cssls" })
+			vim.lsp.enable({ "gopls", "lua_ls", "ts_ls", "angularls", "html", "cssls", "pyright" })
 
 			-- Create buffer-local LSP mappings when a language server attaches
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -69,7 +69,12 @@ return {
 					local opts = { noremap = true, silent = true, buffer = bufnr }
 
 					-- Prefer LSP definition when LSP is attached
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition (LSP)" }))
+					vim.keymap.set(
+						"n",
+						"gd",
+						vim.lsp.buf.definition,
+						vim.tbl_extend("force", opts, { desc = "Go to definition (LSP)" })
+					)
 
 					-- Always available: force Vim's normal/tag-based "gd"
 					vim.keymap.set("n", "<Leader>gd", function()
