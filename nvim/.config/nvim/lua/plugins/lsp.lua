@@ -16,6 +16,7 @@ return {
 				-- go = {}, -- explicitly empty to ensure gopls handles it
 				-- Stylua for Lua files
 				lua = { "stylua" },
+				rust = { "rustfmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
@@ -44,6 +45,15 @@ return {
 				},
 			})
 
+			vim.lsp.config("rust_analyzer", {
+				settings = {
+					rust_analyzer = {
+						checkOnSave = { command = "clippy" },
+						cargo = { allFeatures = true },
+					},
+				},
+			})
+
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
@@ -60,7 +70,7 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "gopls", "lua_ls", "ts_ls", "angularls", "html", "cssls", "pyright" })
+			vim.lsp.enable({ "gopls", "rust_analyzer", "lua_ls", "ts_ls", "angularls", "html", "cssls", "pyright" })
 
 			-- Create buffer-local LSP mappings when a language server attaches
 			vim.api.nvim_create_autocmd("LspAttach", {

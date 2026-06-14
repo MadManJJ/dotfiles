@@ -17,7 +17,7 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 			indent = { enable = true },
-			ensure_installed = { "lua", "go", "gomod", "markdown", "markdown_inline", "typescript", "tsx", "python" },
+			ensure_installed = { "lua", "go", "gomod", "markdown", "markdown_inline", "typescript", "tsx", "python", "rust" },
 			auto_install = false,
 		})
 	end,
