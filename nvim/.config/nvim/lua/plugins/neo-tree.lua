@@ -8,17 +8,17 @@ return {
 	},
 	config = function()
 		require("neo-tree").setup({
-			event_handlers = {
-				{
-					event = "file_opened",
-					handler = function(file_path)
-						require("neo-tree.command").execute({ action = "close" })
-					end,
-				},
-			},
+			-- event_handlers   {
+			-- 	{
+			-- 		event = "file_opened",
+			-- 		handler = function(file_path)
+			-- 			require("neo-tree.command").execute({ action = "close" })
+			-- 		end,
+			-- 	},
+			-- },
 			close_if_last_window = true,
 			window = {
-				position = "float",
+				position = "right",
 				width = 30,
 			},
 			popup_border_style = "single",
@@ -47,6 +47,7 @@ return {
 					enabled = true,
 					leave_dirs_open = false,
 				},
+				bind_to_cwd = false,
 				filtered_items = {
 					visible = false,
 					hide_dotfiles = true,
@@ -56,6 +57,6 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>e", "<cmd>Neotree reveal<cr>", desc = "Toggle Explorer" },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
 	},
 }
