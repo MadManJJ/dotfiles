@@ -4,8 +4,10 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include ~/.config/sway/settings
+
 ### Variables
-#
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -21,7 +23,7 @@ set $menu wmenu-run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/spark/dotfiles/backgrounds/sky.png  fill
+output * bg /home/spark/dotfiles/backgrounds/mountain-range.png  fill
 #
 # Example configuration:
 #
@@ -68,7 +70,7 @@ output * bg /home/spark/dotfiles/backgrounds/sky.png  fill
     bindsym $mod+q exec $term
 
     # Kill focused window
-    bindsym $mod+x kill
+    bindsym $mod+c kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -221,22 +223,36 @@ bindsym $mod+r mode "resize"
 bar {
     position top
 
+    swaybar_command waybar
+
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        statusline $fg
+        background $bg
+        #                   border  bg      text
+        focused_workspace   $accent $accent $bg
+        inactive_workspace  $bg     $bg     $fg
+        urgent_workspace    $bg     $bg     $fg
     }
 }
 
+# WINDOW DECORATIONS
 gaps inner 5
-gaps outer 2
-smart_gaps off
-
+gaps outer 0
 default_border pixel 2
 default_floating_border pixel 2
 
 include /etc/sway/config.d/*
+
+# WINDOW COLORS
+# class                 border  backgr. text    indicator child_border
+client.focused          $accent $bg     $fg     $accent   $accent
+client.focused_inactive $bg     $bg     $fg     $bg       $bg
+client.unfocused        $bg     $bg     $fg     $bg       $bg
+client.urgent           $bg     $bg     $fg     $bg       $bg
+client.placeholder      $bg     $bg     $fg     $bg       $bg
+
+client.background       $bg

@@ -1,0 +1,5 @@
+# Colors
+set $accent #afa193
+set $bg #101010
+set $bg-alt #252525
+set $fg #f6f1ea
