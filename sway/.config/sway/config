@@ -14,14 +14,14 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 set $menu wmenu-run
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/spark/dotfiles/backgrounds/sky.png  fill
 #
 # Example configuration:
 #
@@ -46,12 +46,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+  input type:touchpad {
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      middle_emulation enabled
+  }
 #
 #   input type:keyboard {
 #       xkb_layout "eu"
@@ -65,10 +65,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+q exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+x kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -109,6 +109,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    bindsym Mod1+Tab focus next
+    bindsym Mod1+Shift+Tab focus prev
 #
 # Workspaces:
 #
@@ -228,5 +231,12 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+gaps inner 5
+gaps outer 2
+smart_gaps off
+
+default_border pixel 2
+default_floating_border pixel 2
 
 include /etc/sway/config.d/*
