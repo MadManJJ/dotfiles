@@ -8,9 +8,15 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gentoo"
+ZSH_THEME=""
+
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+PROMPT='%F{#ffffff}%n%f%F{#ebe99d}@%f%F{#ffffff}%m%f %F{#ffffff}%~%f %F{#ebe99d}$(git_prompt_info)%f %F{#ebe99d}$%f '
 
 # Set list of themes to pick from when loading at random
+#
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
@@ -71,7 +77,7 @@ ZSH_THEME="gentoo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#00ffcc"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ebe99d"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,6 +118,10 @@ export PATH=/home/spark/.opencode/bin:$PATH
 alias docker-on='sudo systemctl start docker.socket docker.service'
 alias docker-off='sudo systemctl stop docker.service docker.socket'
 export PATH="$HOME/.local/bin:$PATH"
+
+# Universal System Lid Sleep Shortcuts
+alias nosleep="sudo systemctl mask systemd-logind && sudo systemctl restart systemd-logind && echo 'Lid sleep DISABLED. Fedora will stay awake.'"
+alias yessleep="sudo systemctl unmask systemd-logind && sudo systemctl restart systemd-logind && echo 'Lid sleep ENABLED. Fedora will sleep normally.'"
 
 # aws
 export AWS_PROFILE="sso-dev"
