@@ -13,7 +13,10 @@ ZSH_THEME=""
 autoload -Uz vcs_info
 precmd() { vcs_info }
 
-PROMPT='%F{#ffffff}%n%f%F{#ebe99d}@%f%F{#ffffff}%m%f %F{#ffffff}%~%f %F{#ebe99d}$(git_prompt_info)%f %F{#ebe99d}$%f '
+MAIN_COLOR="#ebe99d"
+RED_COLOR="#85152a"
+
+PROMPT='%F{#ffffff}%n%f%F{'$MAIN_COLOR'}@%f%F{#ffffff}%m%f %F{#ffffff}%~%f %F{'$MAIN_COLOR'}$(git_prompt_info)%f %F{'$MAIN_COLOR'}$%f '
 
 # Set list of themes to pick from when loading at random
 #
@@ -77,7 +80,7 @@ PROMPT='%F{#ffffff}%n%f%F{#ebe99d}@%f%F{#ffffff}%m%f %F{#ffffff}%~%f %F{#ebe99d}
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ebe99d"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$MAIN_COLOR"
 
 source $ZSH/oh-my-zsh.sh
 
