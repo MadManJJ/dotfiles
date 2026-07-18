@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["sway/workspaces","sway/mode"],
     "modules-center": ["custom/clock"],
-    "modules-right": ["sway/language", "pulseaudio", "battery", "backlight", "tray"],
+    "modules-right": ["sway/language", "pulseaudio", "battery", "backlight", "custom/notification", "tray"],
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -62,8 +62,28 @@
     },
     
     "tray": {
-        "icon-size": 20,
+        "icon-size": 30,
         "spacing": 7,
         "tooltip": false
+    },
+    "custom/notification": {
+	"tooltip": false,
+	"format": "{icon}",
+	"format-icons": {
+	    "notification": "<span foreground='red'><sup></sup></span>",
+	    "none": "",
+	    "dnd-notification": "<span foreground='red'><sup></sup></span>",
+	    "dnd-none": "",
+	    "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+	    "inhibited-none": "",
+	    "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+	    "dnd-inhibited-none": ""
+	},
+	"return-type": "json",
+	"exec-if": "which swaync-client",
+	"exec": "swaync-client -swb",
+	"on-click": "sleep 0.1 && swaync-client -t -sw",
+	"on-click-right": "sleep 0.1 && swaync-client -d -sw",
+	"escape": true
     }
 }
