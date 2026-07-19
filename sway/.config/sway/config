@@ -35,10 +35,13 @@ output * bg /home/spark/backgrounds/fantasy-knight.png  fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+### Idle configuration
+#
+exec swayidle -w \
+         timeout 300 'waybar-client idle-inhibitor check || pidof hyprlock || hyprlock' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'pidof hyprlock || hyprlock'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -57,9 +60,7 @@ exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
 ### Input configuration
-#
-# Example configuration:
-#
+
   input type:touchpad {
       dwt enabled
       tap enabled
@@ -67,10 +68,12 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
       middle_emulation enabled
       pointer_accel 0.2
   }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
+
+  # Configures all keyboards to support English and Thai
+  input type:keyboard {
+      xkb_layout "us,th"
+      xkb_options "grp:alt_shift_toggle"
+  }
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
@@ -109,10 +112,12 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    # bindsym $mod+Left focus left
+    # bindsym $mod+Down focus down
+    # bindsym $mod+Up focus up
+    # bindsym $mod+Right focus right
+    bindsym $mod+Left workspace prev
+    bindsym $mod+Right workspace next
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -154,6 +159,8 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+
 #
 # Layout stuff:
 #
@@ -164,7 +171,7 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -214,6 +221,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 #
 # Utilities:
@@ -226,8 +234,16 @@ bindsym $mod+r mode "resize"
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
+
+    # ==========================================
+    # SCREENSHOTS (Windows + S Shortcuts)
+    # ==========================================
+
+    # Windows + S -> Capture full screen directly to clipboard
+    bindsym $mod+s exec grimshot --notify copy screen
+
+    # Windows + Shift + S -> Select an area and copy to clipboard
+    bindsym $mod+Shift+s exec grimshot --notify copy area
 
 
 #
