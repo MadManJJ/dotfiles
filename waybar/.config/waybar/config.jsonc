@@ -3,8 +3,8 @@
     "position": "top",
     "height": 30,
     "spacing": 0,
-    "modules-left": ["sway/workspaces","sway/mode"],
-    "modules-center": ["custom/clock"],
+    "modules-left": ["sway/workspaces","sway/mode", "custom/clock"],
+    "modules-center": [],
     "modules-right": ["sway/language", "pulseaudio", "cpu", "memory", "battery", "custom/notification", "tray"],
 
     "sway/workspaces": {
@@ -55,6 +55,17 @@
         "tooltip": false,
         "interval": 20
     },
+
+	//    "idle_inhibitor": {
+	// "format": "{icon}",
+	// "format-icons": {
+	//     "activated": "☕ ",
+	//     "deactivated": "󰾪 "
+	// },
+	// "tooltip": true,
+	// "tooltip-format-activated": "Caffeine Active (Won't Sleep)",
+	// "tooltip-format-deactivated": "Caffeine Inactive"
+	//    },
     
     "tray": {
         "icon-size": 30,

@@ -25,7 +25,8 @@ window#waybar {
 #backlight,
 #custom-clock,
 #cpu,
-#memory {
+#memory,
+#idle_inhibitor {
   font-family: "JetBrainsMono Nerd Font";
   color: @fg;
 }
