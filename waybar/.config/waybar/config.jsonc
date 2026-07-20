@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["sway/workspaces","sway/mode", "custom/clock"],
     "modules-center": [],
-    "modules-right": ["sway/language", "pulseaudio", "cpu", "memory", "battery", "custom/notification", "tray"],
+    "modules-right": ["sway/language", "pulseaudio", "cpu", "memory", "battery", "custom/lid-mode", "custom/notification", "tray"],
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -92,5 +92,12 @@
         "on-click": "sleep 0.1 && swaync-client -t -sw",
         "on-click-right": "sleep 0.1 && swaync-client -d -sw",
         "escape": true
-    }
+    },
+
+    "custom/lid-mode": {
+      "exec": "~/.config/waybar/scripts/lid-mode.sh",
+      "on-click": "~/.config/waybar/scripts/lid-mode.sh toggle",
+      "return-type": "json",
+      "interval": 3
+  }
 }
