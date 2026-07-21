@@ -34,7 +34,8 @@
 
     "pulseaudio": {
         "format": "<span color='#afa193'><b>vol:</b></span> {volume}%",
-        "format-muted": "<span color='#afa193'><b>vol:</b></span> {volume}% (m)"
+        "format-muted": "<span color='#afa193'><b>vol:</b></span> {volume}% (m)",
+	"on-click": "sh -c 'pidof pavucontrol && pkill pavucontrol || pavucontrol'"
     },
 
     "cpu": {
@@ -55,17 +56,6 @@
         "tooltip": false,
         "interval": 20
     },
-
-	//    "idle_inhibitor": {
-	// "format": "{icon}",
-	// "format-icons": {
-	//     "activated": "☕ ",
-	//     "deactivated": "󰾪 "
-	// },
-	// "tooltip": true,
-	// "tooltip-format-activated": "Caffeine Active (Won't Sleep)",
-	// "tooltip-format-deactivated": "Caffeine Inactive"
-	//    },
     
     "tray": {
         "icon-size": 30,
