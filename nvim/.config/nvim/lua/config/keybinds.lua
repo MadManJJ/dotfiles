@@ -24,3 +24,7 @@ vim.keymap.set("n", "<Leader>p", ":BufferLineCyclePrev<CR>")
 
 -- Close current buffer (Close tab)
 vim.keymap.set("n", "<Leader>x", ":bdelete<CR>")
+
+-- Indentation
+vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
