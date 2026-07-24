@@ -62,5 +62,18 @@ return {
 	},
 	{
 		"sainnhe/gruvbox-material",
+		lazy = false,
+		priority = 1000, -- Load the colorscheme before other plugins
+		config = function()
+			-- Enable transparency:
+			-- 1 = Standard transparent background
+			-- 2 = Extra transparency (includes floating windows/more UI components)
+			vim.g.gruvbox_material_transparent_background = 1
+
+			-- Optional contrast preset: "hard", "medium" (default), or "soft"
+			vim.g.gruvbox_material_background = "medium"
+
+			vim.cmd.colorscheme("gruvbox-material")
+		end,
 	},
 }
