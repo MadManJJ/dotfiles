@@ -13,8 +13,9 @@ vim.opt_global.fileformat = "unix"
 vim.opt.background = "dark"
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 
-vim.keymap.set("n", "j", "<Plug>(accelerated_jk_gj)", opts)
-vim.keymap.set("n", "k", "<Plug>(accelerated_jk_gk)", opts)
+-- Shift + j and Shift + k will now use accelerated movement
+vim.keymap.set("n", "J", "<Plug>(accelerated_jk_gj)", opts)
+vim.keymap.set("n", "K", "<Plug>(accelerated_jk_gk)", opts)
 
 -- Delete without copying into default register
 -- vim.keymap.set({ "n", "v" }, "d", '"_d', { desc = "Delete without yanking" })
