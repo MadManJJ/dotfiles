@@ -1,10 +1,10 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 30,
+    "height": 10,
     "spacing": 0,
-    "modules-left": ["sway/workspaces","sway/mode", "custom/clock"],
-    "modules-center": [],
+    "modules-left": ["sway/workspaces","sway/mode"],
+    "modules-center": ["custom/clock"],
     "modules-right": ["sway/language", "pulseaudio", "cpu", "memory", "battery", "custom/lid-mode", "custom/notification", "tray"],
 
     "sway/workspaces": {
@@ -57,7 +57,7 @@
     },
     
     "tray": {
-        "icon-size": 30,
+        "icon-size": 20,
         "spacing": 7,
         "tooltip": false
     },

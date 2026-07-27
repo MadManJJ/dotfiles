@@ -43,14 +43,14 @@ handle_close() {
             if on_ac; then
                 swaymsg output eDP-1 power off   # staying awake on AC — dim the panel manually
             else
-                systemctl suspend                 # on battery — just suspend, let resume handle the display
+                hyprlock & systemctl suspend                 # on battery — just suspend, let resume handle the display
             fi
             ;;
         1)
             swaymsg output eDP-1 power off       # "awake" mode — machine stays on, dim manually
             ;;
         2)
-            systemctl suspend                     # "forced" — always suspend, let resume handle the display
+            hyprlock & systemctl suspend                     # "forced" — always suspend, let resume handle the display
             ;;
     esac
 }
