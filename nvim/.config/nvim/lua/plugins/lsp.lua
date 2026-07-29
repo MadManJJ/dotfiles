@@ -47,9 +47,20 @@ return {
 
 			vim.lsp.config("rust_analyzer", {
 				settings = {
-					rust_analyzer = {
-						checkOnSave = { command = "clippy" },
+					["rust-analyzer"] = {
+						-- 1. Force this to a boolean to kill the map error
+						checkOnSave = true,
+						-- 2. Use the new schema for the clippy command
+						check = {
+							command = "clippy",
+						},
 						cargo = { allFeatures = true },
+						-- 3. Prevent the autocomplete termSearch crash
+						completion = {
+							termSearch = {
+								enable = false,
+							},
+						},
 					},
 				},
 			})

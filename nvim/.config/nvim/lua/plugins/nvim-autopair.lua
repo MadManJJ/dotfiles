@@ -1,6 +1,10 @@
 return {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
-	config = true,
-	-- use config = function() require('nvim-autopairs').setup({}) end for custom options
+	config = function()
+		require("nvim-autopairs").setup({
+			-- This makes sure it doesn't auto-pair if you are typing next to a word
+			check_ts = true,
+		})
+	end,
 }
