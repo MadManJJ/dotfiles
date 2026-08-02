@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["sway/workspaces","sway/mode"],
     "modules-center": ["custom/clock"],
-    "modules-right": ["sway/language", "pulseaudio", "cpu", "memory", "battery", "custom/lid-mode", "custom/notification", "tray"],
+    "modules-right": ["sway/language", "pulseaudio", "temperature", "cpu", "memory", "battery", "custom/lid-mode", "custom/notification", "tray"],
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -60,6 +60,13 @@
         "icon-size": 20,
         "spacing": 7,
         "tooltip": false
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>temp:</b></span> {temperatureC}°C",
+        "format-critical": "<span color='#252525'> / </span><span color='#ff0000'><b>temp:</b></span> {temperatureC}°C",
+        "interval": 5
     },
     
     "custom/notification": {
