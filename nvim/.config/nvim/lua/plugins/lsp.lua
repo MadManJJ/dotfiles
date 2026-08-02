@@ -32,7 +32,9 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Keep your speed optimization
-			capabilities.workspace = { didChangeWatchedFiles = { dynamicRegistration = false } }
+			capabilities.workspace = vim.tbl_deep_extend("force", capabilities.workspace or {}, {
+				didChangeWatchedFiles = { dynamicRegistration = false },
+			})
 
 			vim.lsp.config("*", { capabilities = capabilities })
 
@@ -46,21 +48,13 @@ return {
 			})
 
 			vim.lsp.config("rust_analyzer", {
+				capabilities = capabilities,
 				settings = {
 					["rust-analyzer"] = {
-						-- 1. Force this to a boolean to kill the map error
-						checkOnSave = true,
-						-- 2. Use the new schema for the clippy command
 						check = {
 							command = "clippy",
 						},
 						cargo = { allFeatures = true },
-						-- 3. Prevent the autocomplete termSearch crash
-						completion = {
-							termSearch = {
-								enable = false,
-							},
-						},
 					},
 				},
 			})

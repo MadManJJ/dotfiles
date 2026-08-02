@@ -1,5 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
+	event = "InsertEnter", -- Ensures cmp loads as soon as you enter insert mode
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -25,6 +26,7 @@ return {
 			}),
 			sources = {
 				{ name = "nvim_lsp" },
+				{ name = "luasnip" }, -- ADD THIS LINE
 				{ name = "buffer" },
 			},
 		})
