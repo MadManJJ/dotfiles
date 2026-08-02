@@ -70,6 +70,8 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
   input type:touchpad {
       dwt enabled
       tap enabled
+      drag enabled
+      drag_lock disabled
       natural_scroll enabled
       middle_emulation enabled
       pointer_accel 0.2
