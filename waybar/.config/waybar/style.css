@@ -31,6 +31,11 @@ window#waybar {
   color: @fg;
 }
 
+#custom-notification,
+#custom-lid-mode {
+  color: #ffffff;
+}
+
 #workspaces {
   font-family: "JetBrainsMono Nerd Font";
   border-bottom: 1px solid @bg-alt;

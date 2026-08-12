@@ -41,13 +41,17 @@ handle_close() {
     case "$(cat "$STATEFILE")" in
         0)
             if on_ac; then
-                swaymsg output eDP-1 power off   # staying awake on AC — dim the panel manually
+                pidof hyprlock || hyprlock &      # lock while panel is still on so hyprlock renders
+                sleep 0.7
+                swaymsg output eDP-1 power off    # staying awake on AC — dim the panel manually
             else
                 hyprlock & systemctl suspend                 # on battery — just suspend, let resume handle the display
             fi
             ;;
         1)
-            swaymsg output eDP-1 power off       # "awake" mode — machine stays on, dim manually
+            pidof hyprlock || hyprlock &          # lock while panel is still on so hyprlock renders
+            sleep 0.7
+            swaymsg output eDP-1 power off        # "awake" mode — machine stays on, dim manually
             ;;
         2)
             hyprlock & systemctl suspend                     # "forced" — always suspend, let resume handle the display

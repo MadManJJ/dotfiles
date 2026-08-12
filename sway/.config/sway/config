@@ -6,6 +6,10 @@
 
 include ~/.config/sway/settings
 
+# Tell Qt/KDE apps (like Dolphin) to use KDE integration
+set $QT_QPA_PLATFORMTHEME kde
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway QT_QPA_PLATFORMTHEME=kde
+
 ### Variables
 
 # Logo key. Use Mod1 for Alt.
@@ -42,8 +46,12 @@ exec swayidle -w \
          # timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'pidof hyprlock || hyprlock'
 
-exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-exec_always gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+exec_always {
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    plasma-apply-colorscheme BreezeDark
+}
 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -298,7 +306,7 @@ client.background       $bg
 
 output eDP-1 resolution 1920x1200@60Hz adaptive_sync off scale 1.0
 
-bindswitch --reload lid:on exec ~/.config/waybar/scripts/lid-mode.sh closed
-bindswitch --reload lid:off exec ~/.config/waybar/scripts/lid-mode.sh open
+bindswitch --reload --locked lid:on exec ~/.config/waybar/scripts/lid-mode.sh closed
+bindswitch --reload --locked lid:off exec ~/.config/waybar/scripts/lid-mode.sh open
 
 for_window [app_id="pavucontrol"] floating enable, resize set 700px 500px, move position 1100px 10px
