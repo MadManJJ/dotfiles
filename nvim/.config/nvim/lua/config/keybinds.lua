@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "Format file" })
 -- vim.keymap.set("n", "<Leader>ve", ":botright vnew | Telescope find_files<CR>")
 vim.keymap.set("n", "<Leader>ve", ":botright vnew<CR>")
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
+vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, { desc = "LSP Hover" })
 vim.keymap.set("n", "<leader>tc", ":Telescope colorscheme<CR>", { silent = true })
 
 -- Resizing windows with Alt + Arrow Keys
