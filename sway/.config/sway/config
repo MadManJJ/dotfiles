@@ -22,7 +22,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu 'rofi -show drun'
+set $menu 'rofi -show drun -no-custom -no-drun-use-fallback'
 
 ### Output configuration
 #
@@ -40,8 +40,8 @@ output * bg /home/spark/backgrounds/space.png  fill
 # Example configuration:
 #
 ### Idle configuration
-#
 exec swayidle -w \
+	 timeout 290 'brightnessctl -s set 10%' resume 'brightnessctl -r' \
          timeout 300 'pidof hyprlock || hyprlock' \
          # timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'pidof hyprlock || hyprlock'
@@ -89,6 +89,10 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
   input type:keyboard {
       xkb_layout "us,th"
       xkb_options "grp:alt_shift_toggle"
+ }
+
+  input type:pointer {
+      pointer_accel -0.5
   }
 #
 # You can also configure each device individually.
@@ -304,7 +308,8 @@ client.placeholder      $bg     $bg     $fg     $bg       $bg
 
 client.background       $bg
 
-output eDP-1 resolution 1920x1200@60Hz adaptive_sync off scale 1.0
+output eDP-1 resolution 1920x1200@60Hz position 0,0 scale 1.0
+output HDMI-A-1 resolution 1920x1080 position 1920,0
 
 bindswitch --reload --locked lid:on exec ~/.config/waybar/scripts/lid-mode.sh closed
 bindswitch --reload --locked lid:off exec ~/.config/waybar/scripts/lid-mode.sh open
