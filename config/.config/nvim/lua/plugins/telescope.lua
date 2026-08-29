@@ -53,7 +53,14 @@ return {
 			})
 		end, { desc = "Workspace Diagnostics" })
 		vim.keymap.set("n", "gl", function()
-			vim.diagnostic.open_float({ border = "rounded" })
+			local _, winid = vim.diagnostic.open_float({
+				border = "rounded",
+				focusable = true,
+			})
+
+			if winid then
+				vim.api.nvim_set_current_win(winid)
+			end
 		end, { desc = "Show Line Diagnostics" })
 	end,
 }
