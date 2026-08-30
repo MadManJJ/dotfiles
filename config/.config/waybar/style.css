@@ -66,3 +66,23 @@ window#waybar {
   padding-right: 5px;
   padding-left: 10px;
 }
+
+#tray menu {
+  background-color: @bg;
+  color: @fg;
+  border: 1px solid @bg-alt;
+}
+
+#tray menu menuitem {
+  background-color: @bg;
+  color: @fg;
+}
+
+#tray menu menuitem:hover {
+  background-color: @bg-alt;
+  color: @accent;
+}
+
+#tray menu separator {
+  background-color: @bg-alt;
+}
