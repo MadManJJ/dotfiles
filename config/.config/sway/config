@@ -23,7 +23,7 @@ set $menu 'rofi -show drun -no-custom -no-drun-use-fallback'
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/spark/backgrounds/space.png  fill
+output * bg /home/spark/backgrounds/dragon-red-blue.png  fill
 #
 # Example configuration:
 #

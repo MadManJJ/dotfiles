@@ -2,7 +2,7 @@ require("config.options")
 require("config.keybinds")
 require("config.lazy")
 vim.opt.clipboard = "unnamedplus"
-vim.cmd([[colorscheme gruvbox-material]])
+vim.cmd([[colorscheme default]])
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
