@@ -17,6 +17,7 @@ return {
 				-- Stylua for Lua files
 				lua = { "stylua" },
 				rust = { "rustfmt" },
+				terraform = { "terraform_fmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
@@ -75,7 +76,7 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "gopls", "rust_analyzer", "lua_ls", "ts_ls", "angularls", "html", "cssls", "pyright" })
+			vim.lsp.enable({ "gopls", "rust_analyzer", "lua_ls", "ts_ls", "angularls", "html", "cssls", "pyright", "terraformls" })
 
 			-- Create buffer-local LSP mappings when a language server attaches
 			vim.api.nvim_create_autocmd("LspAttach", {
