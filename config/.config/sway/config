@@ -298,7 +298,7 @@ bar {
 }
 
 # WINDOW DECORATIONS
-gaps inner 3
+gaps inner 10
 gaps outer 7
 default_border pixel 1
 default_floating_border pixel 1
